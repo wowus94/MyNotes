@@ -70,15 +70,16 @@ public class NotesFragment extends Fragment {
         }
     }
 
+    private void showLand() {
+        FullNotesFragment fullNotesFragment = FullNotesFragment.newInstance(currentWeek);
+        getActivity().getSupportFragmentManager().beginTransaction().add(R.id.full_notes, fullNotesFragment).addToBackStack("").commit();
+    }
+
     private void showPort() {
         FullNotesFragment fullNotesFragment = FullNotesFragment.newInstance(currentWeek);
         getActivity().getSupportFragmentManager().beginTransaction().add(R.id.list_notes, fullNotesFragment).addToBackStack("").commit();
     }
 
-    private void showLand() {
-        FullNotesFragment fullNotesFragment = FullNotesFragment.newInstance(currentWeek);
-        getActivity().getSupportFragmentManager().beginTransaction().add(R.id.full_notes, fullNotesFragment).addToBackStack("").commit();
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
