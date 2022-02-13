@@ -37,7 +37,7 @@ public class FullNotesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         week = getArguments().getParcelable(TASK_WEEK);
-        TextView textView = view.findViewById(R.id.text);
+        TextView textView = view.findViewById(R.id.full_notes);
         TypedArray valueOf = getResources().obtainTypedArray(R.array.task);
         textView.setText(valueOf.getResourceId(week.getIndex(),R.array.task));
     }

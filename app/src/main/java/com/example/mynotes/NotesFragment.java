@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 
 public class NotesFragment extends Fragment {
     public static final String CURRENT_WEEK = "week_current";
-    private Week currentWeek;
+    public Week currentWeek;
 
     public static NotesFragment newInstance() {
         NotesFragment fragment = new NotesFragment();

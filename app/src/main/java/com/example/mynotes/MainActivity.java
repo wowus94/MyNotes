@@ -1,6 +1,5 @@
 package com.example.mynotes;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,17 +16,16 @@ public class MainActivity extends AppCompatActivity {
             NotesFragment notesFragment = new NotesFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.list_notes, notesFragment).commit();
 
-
-            }
         }
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Fragment backStackFragment = (Fragment)getSupportFragmentManager()
+        Fragment backStackFragment = getSupportFragmentManager()
                 .findFragmentById(R.id.list_notes);
-        if(backStackFragment!=null&&backStackFragment instanceof FullNotesFragment){
+        if (backStackFragment != null && backStackFragment instanceof FullNotesFragment) {
             onBackPressed();
         }
     }
-    }
+}
