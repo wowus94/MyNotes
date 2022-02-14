@@ -12,8 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.gcm.Task;
-
 public class FullNotesFragment extends Fragment {
 
     public static final String TASK_WEEK = "task";
@@ -37,11 +35,11 @@ public class FullNotesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        currentWeek = getArguments().getParcelable(TASK_WEEK);
-        initList(view);
-
+        if (getArguments() != null) {
+            currentWeek = getArguments().getParcelable(TASK_WEEK);
+            initList(view);
+        }
     }
-
 
     private void initList(View view) {
         LinearLayout layoutView = (LinearLayout) view;
@@ -61,6 +59,7 @@ public class FullNotesFragment extends Fragment {
     }
 
     private void shouldShowRequestPermissionRationale(Week currentWeek) {
+        this.currentWeek = currentWeek;
     }
 
     @Override
