@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    public Week currentWeek;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             NotesFragment notesFragment = new NotesFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.list_notes, notesFragment).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.list_notes, notesFragment).commit();
 
         }
     }

@@ -72,7 +72,7 @@ public class NotesFragment extends Fragment {
 
     private void showLand() {
         FullNotesFragment fullNotesFragment = FullNotesFragment.newInstance(currentWeek);
-        getActivity().getSupportFragmentManager().beginTransaction().add(R.id.full_notes, fullNotesFragment).addToBackStack("").commit();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.full_notes, fullNotesFragment).addToBackStack("").commit();
     }
 
     private void showPort() {

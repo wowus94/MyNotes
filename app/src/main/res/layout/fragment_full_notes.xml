@@ -3,20 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
     android:background="@color/background_color_full"
+    android:clickable="true"
+    android:orientation="vertical"
     tools:context=".NotesFragment">
 
-    <TextView
+
+    <FrameLayout
         android:id="@+id/fragment_notes"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <TextView
+    <FrameLayout
         android:id="@+id/full_notes"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"/>
 
 </LinearLayout>

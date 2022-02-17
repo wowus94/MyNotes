@@ -51,16 +51,19 @@ public class FullNotesFragment extends Fragment {
             tv.setTextSize(30);
             layoutView.addView(tv);
             final int fi = i;
-            tv.setOnClickListener(v -> {
-                currentWeek = new Week(fi);
-                shouldShowRequestPermissionRationale(currentWeek);
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((MainActivity)getActivity()).currentWeek = new Week(fi);
+                    showNoteDescription(((MainActivity)getActivity()).currentWeek);
+                }
             });
         }
     }
 
-    private void shouldShowRequestPermissionRationale(Week currentWeek) {
-        this.currentWeek = currentWeek;
+    private void showNoteDescription(Week currentWeek) {
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
