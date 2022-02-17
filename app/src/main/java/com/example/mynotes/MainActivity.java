@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment backStackFragment = getSupportFragmentManager()
                 .findFragmentById(R.id.list_notes);
         if (backStackFragment != null && backStackFragment instanceof FullNotesFragment) {
-            onBackPressed();
+            //onBackPressed();
         }
     }
 }

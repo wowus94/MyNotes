@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import org.w3c.dom.Text;
+
 public class FullNotesFragment extends Fragment {
 
     public static final String TASK_WEEK = "task";
@@ -42,27 +44,11 @@ public class FullNotesFragment extends Fragment {
     }
 
     private void initList(View view) {
-        LinearLayout layoutView = (LinearLayout) view;
         String[] notes = getResources().getStringArray(R.array.task);
-        for (int i = 0; i < notes.length; i++) {
-            String note = notes[i];
-            TextView tv = new TextView(getContext());
-            tv.setText(note);
-            tv.setTextSize(30);
-            layoutView.addView(tv);
-            final int fi = i;
-            tv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ((MainActivity)getActivity()).currentWeek = new Week(fi);
-                    showNoteDescription(((MainActivity)getActivity()).currentWeek);
-                }
-            });
-        }
+        TextView tvNote = view.findViewById(R.id.tvNote);
+        tvNote.setText(notes[currentWeek.getIndex()]);
     }
 
-    private void showNoteDescription(Week currentWeek) {
-    }
 
 
     @Override
