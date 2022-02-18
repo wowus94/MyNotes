@@ -5,19 +5,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import org.w3c.dom.Text;
-
 public class FullNotesFragment extends Fragment {
 
     public static final String TASK_WEEK = "task";
     private Week currentWeek;
+
 
     public static FullNotesFragment newInstance(Week week) {
         FullNotesFragment fragment = new FullNotesFragment();
@@ -40,6 +38,13 @@ public class FullNotesFragment extends Fragment {
         if (getArguments() != null) {
             currentWeek = getArguments().getParcelable(TASK_WEEK);
             initList(view);
+
+            view.findViewById(R.id.back_btn).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    requireActivity().getSupportFragmentManager().popBackStack();
+                }
+            });
         }
     }
 
@@ -49,6 +54,9 @@ public class FullNotesFragment extends Fragment {
         tvNote.setText(notes[currentWeek.getIndex()]);
     }
 
+    public void getC() {
+
+    }
 
 
     @Override
