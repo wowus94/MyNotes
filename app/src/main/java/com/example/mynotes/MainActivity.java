@@ -40,11 +40,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_about:{
-                getSupportFragmentManager().beginTransaction().replace(R.id.list_notes, new AboutFragment()).addToBackStack("").commit();
+            case R.id.action_about: {
+                getSupportFragmentManager().beginTransaction().
+                        replace(R.id.list_notes, new AboutFragment()).addToBackStack("").commit();
                 return true;
             }
-            case (R.id.action_exit):{
+            case (R.id.action_exit): {
                 finish();
             }
         }
