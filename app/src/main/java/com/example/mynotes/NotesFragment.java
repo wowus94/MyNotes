@@ -17,11 +17,6 @@ public class NotesFragment extends Fragment {
     public static final String CURRENT_WEEK = "week_current";
     public Week currentWeek;
 
-    public static NotesFragment newInstance() {
-        NotesFragment fragment = new NotesFragment();
-        return fragment;
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +43,7 @@ public class NotesFragment extends Fragment {
             showLand();
         }
         initView(view);
+
     }
 
     private void initView(View view) {

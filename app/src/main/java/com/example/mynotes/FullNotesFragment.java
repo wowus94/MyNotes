@@ -1,5 +1,6 @@
 package com.example.mynotes;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,12 +33,14 @@ public class FullNotesFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_full_notes, container, false);
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (getArguments() != null) {
             currentWeek = getArguments().getParcelable(TASK_WEEK);
             initList(view);
+
 
             view.findViewById(R.id.back_btn).setOnClickListener(new View.OnClickListener() {
                 @Override

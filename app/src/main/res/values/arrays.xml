@@ -20,4 +20,7 @@
         <item>Отдохнуть от такой насыщенной недели.</item>
     </string-array>
 
+    <integer-array name="pic">
+        <item>@drawable/pic</item>
+    </integer-array>
 </resources>
