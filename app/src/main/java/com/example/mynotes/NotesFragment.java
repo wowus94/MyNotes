@@ -1,12 +1,16 @@
 package com.example.mynotes;
 
+import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
+import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +37,8 @@ public class NotesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
         if (savedInstanceState != null) {
             currentWeek = savedInstanceState.getParcelable(CURRENT_WEEK);
 
@@ -43,8 +49,9 @@ public class NotesFragment extends Fragment {
             showLand();
         }
         initView(view);
-
     }
+
+
 
     private void initView(View view) {
         String[] week = getResources().getStringArray(R.array.week);

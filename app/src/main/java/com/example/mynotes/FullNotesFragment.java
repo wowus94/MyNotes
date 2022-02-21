@@ -1,6 +1,7 @@
 package com.example.mynotes;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,7 +64,7 @@ public class FullNotesFragment extends Fragment {
         if (getArguments() != null) {
             currentWeek = getArguments().getParcelable(TASK_WEEK);
             initList(view);
-
+            initPopupMenu(view);
 
             view.findViewById(R.id.back_btn).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -72,7 +74,31 @@ public class FullNotesFragment extends Fragment {
             });
         }
     }
+    private void initPopupMenu(View view) {
+        TextView textView = view.findViewById(R.id.popup_btn);
+        textView.setOnLongClickListener(v -> {
+            Activity activity = requireActivity();
+            PopupMenu popupMenu = new PopupMenu(activity, v);
+            activity.getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
+            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem menuItem) {
+                    switch (menuItem.getItemId()) {
+                        case R.id.action_popup_clear:
+                            textView.setText(0);
+                            return true;
+                        case R.id.action_popup_exit:
+                            activity.finish();
+                            return true;
+                    }
 
+                    return true;
+                }
+            });
+            popupMenu.show();
+            return true;
+        });
+    }
     private void initList(View view) {
         String[] notes = getResources().getStringArray(R.array.task);
         TextView tvNote = view.findViewById(R.id.tvNote);
