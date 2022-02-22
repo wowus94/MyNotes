@@ -2,4 +2,5 @@
 <resources>
     <dimen name="sizeTextTitle">30sp</dimen>
     <dimen name="sizeText">25sp</dimen>
+    <dimen name="marginBottom">80dp</dimen>
 </resources>

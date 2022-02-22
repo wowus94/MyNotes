@@ -66,6 +66,9 @@ public class FullNotesFragment extends Fragment {
             initList(view);
             initPopupMenu(view);
 
+            getChildFragmentManager().beginTransaction().replace(R.id.container_child, FullNotesChildFragment.newInstance(currentWeek))
+                    .addToBackStack("").commit();
+
             view.findViewById(R.id.back_btn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
