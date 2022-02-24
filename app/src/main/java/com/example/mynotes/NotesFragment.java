@@ -1,20 +1,18 @@
 package com.example.mynotes;
 
-import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
-import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 public class NotesFragment extends Fragment {
@@ -52,8 +50,8 @@ public class NotesFragment extends Fragment {
     }
 
 
-
     private void initView(View view) {
+
         String[] week = getResources().getStringArray(R.array.week);
         for (int i = 0; i < week.length; i++) {
             String weekName = week[i];
@@ -72,6 +70,7 @@ public class NotesFragment extends Fragment {
             });
         }
     }
+
 
     private void showLand() {
         FullNotesFragment fullNotesFragment = FullNotesFragment.newInstance(currentWeek);

@@ -11,4 +11,5 @@
     <string name="toast">Toast</string>
     <string name="clear">Clear</string>
     <string name="popup">Popup</string>
+    <string name="btn_exit">Выход</string>
 </resources>

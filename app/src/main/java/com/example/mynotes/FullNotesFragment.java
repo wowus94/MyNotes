@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 public class FullNotesFragment extends Fragment {
@@ -43,7 +44,7 @@ public class FullNotesFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_toast: {
-                Toast.makeText(requireContext(),"Toast", Toast.LENGTH_LONG).show();
+                Toast.makeText(requireContext(), "Привет!", Toast.LENGTH_LONG).show();
                 return true;
             }
         }
@@ -69,16 +70,20 @@ public class FullNotesFragment extends Fragment {
             getChildFragmentManager().beginTransaction().replace(R.id.container_child, FullNotesChildFragment.newInstance(currentWeek))
                     .addToBackStack("").commit();
 
-            view.findViewById(R.id.back_btn).setOnClickListener(new View.OnClickListener() {
+            /*view.findViewById(R.id.back_btn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     requireActivity().getSupportFragmentManager().popBackStack();
                 }
-            });
+            });*/
         }
     }
+
     private void initPopupMenu(View view) {
-        TextView textView = view.findViewById(R.id.popup_btn);
+        view.findViewById(R.id.back_exit).setOnClickListener(v -> showAlertDialog());
+
+
+        TextView textView = view.findViewById(R.id.tvNote);
         textView.setOnLongClickListener(v -> {
             Activity activity = requireActivity();
             PopupMenu popupMenu = new PopupMenu(activity, v);
@@ -88,7 +93,7 @@ public class FullNotesFragment extends Fragment {
                 public boolean onMenuItemClick(MenuItem menuItem) {
                     switch (menuItem.getItemId()) {
                         case R.id.action_popup_clear:
-                            textView.setText(0);
+                            textView.setText("");
                             return true;
                         case R.id.action_popup_exit:
                             activity.finish();
@@ -102,6 +107,30 @@ public class FullNotesFragment extends Fragment {
             return true;
         });
     }
+
+
+    void showAlertDialog() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("AlertDialog")
+                .setMessage("Выйти из приложения?")
+                .setPositiveButton("Да", (dialog, which) -> {
+                    requireActivity().finish();
+                })
+                .setNegativeButton("Нет", (dialog, which) -> {
+                    showToast("Нет");
+                })
+                .setNeutralButton("Я подумаю", (dialog, which) -> {
+                    showToast("Ты подумаешь");
+                })
+                .show();
+    }
+
+
+    private void showToast(String message) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show();
+    }
+
+
     private void initList(View view) {
         String[] notes = getResources().getStringArray(R.array.task);
         TextView tvNote = view.findViewById(R.id.tvNote);
