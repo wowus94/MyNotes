@@ -12,7 +12,7 @@
         android:id="@+id/full_notes_child"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="2"/>
+        android:layout_weight="2" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/back_btn"
@@ -22,4 +22,5 @@
         android:layout_marginBottom="@dimen/marginBottom"
         android:text="@string/back_btn"
         android:textSize="@dimen/sizeText" />
+
 </LinearLayout>
